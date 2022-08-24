@@ -29,7 +29,7 @@ console.log (passwordLength); // for us to know what the value of passwordLength
 if (passwordLength<8) {
    alert ("Your password needs to be at least 8 characters long, please try again");
    
-  } else if (passwordLength>=128) {
+  } else if (passwordLength>128) {
    alert ("Your password cannot be longer than 128 characters,please try again");
  };
 // recursion-calling a function inside of itself. 
