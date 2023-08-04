@@ -16,7 +16,7 @@ var generatePassword = function () {
 
   if (passwordLength < 8) {
     alert("Your password needs to be at least 8 characters long, please try again");
-
+    return;
   } else if (passwordLength > 128) {
     alert("Your password cannot be longer than 128 characters,please try again");
   };
@@ -31,6 +31,12 @@ var generatePassword = function () {
   var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
+
+  // const passwordRequirements= confirm("Did you want" + [i] + "in your Password?")
+  //hasUpper, hasLower, hasSymbols, hasNumeric
+
+
+
   var hasUpper = confirm("Did you want Upper case letters in your Password?");
   // console.log(hasUpper);
 
@@ -43,32 +49,25 @@ var generatePassword = function () {
 
   var userSelection = [];
 
-  //  for (i=0; i<none.length; i++)
-  // if (noneSelect<1) {
-  //    
-  // } 
 
-  if (hasUpper) {
-    userSelection = userSelection.concat(upper);
-
-    // you have to store it in a variable, once they are put together- where is it going to go? A: userSelection= 
-
-  };
-  if (hasLower) {
-    userSelection = userSelection.concat(lower);
-
-  }
-  if (hasSymbols) {
-    userSelection = userSelection.concat(symbols);
-
+  switch (confirm("Your password will be generated")) {
+    case hasUpper:
+      userSelection = userSelection.concat(upper)
+      // console.log("The user selected to have upper case letters in password");
+      break;
+    case hasLower:
+      userSelection.concat(lower)
+    // console.log("The user selected to have lower case letters in password")
+    case hasSymbols:
+      userSelection.concat(symbols)
+    case hasNumeric:
+      userSelection.concat(numbers)
+      break;
+    default: console.log("password generator is down!");
+      break;
   }
 
 
-
-  if (hasNumeric) {
-    userSelection = userSelection.concat(numbers);
-
-  }
   if (userSelection.length < 1) {
     alert("Please select at least one special character, please try again.");
     return;
@@ -90,5 +89,5 @@ var generatePassword = function () {
 
 
 };
-// passwordLength();
+
 generateBtn.addEventListener("click", writePassword)
